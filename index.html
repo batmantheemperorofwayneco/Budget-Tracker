@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Budget Tracker</h1>
+
+        <button id="toggle-dark" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+        <div class="input-group">
+            <label>Filter by Month:</label>
+            <input type="month" id="filter-month" onchange="filterTransactions()">
+        </div>
+
+        <div class="input-group">
+            <label>Description:</label>
+            <input type="text" id="desc">
+        </div>
+        <div class="input-group">
+            <label>Amount:</label>
+            <input type="number" id="amount">
+        </div>
+        <div class="input-group">
+            <label>Type:</label>
+            <select id="type">
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>Department:</label>
+            <select id="department">
+                <option value="HR">HR</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Sales">Sales</option>
+                <option value="IT">IT</option>
+                <option value="Operations">Operations</option>
+            </select>
+        </div>
+        <button onclick="addTransaction()">Add Transaction</button>
+
+        <h2>Transactions</h2>
+        <ul id="transactions"></ul>
+
+        <h2>Total Balance: <span id="balance">0</span></h2>
+        <p id="budget-alert"></p>
+
+        <div class="export-buttons">
+            <button onclick="exportCSV()">Export as CSV</button>
+            <button onclick="exportPDF()">Export as PDF</button>
+        </div>
+
+        <h2>Expense Breakdown</h2>
+        <canvas id="expenseChart"></canvas>
+
+        <h2>Income Breakdown</h2>
+        <canvas id="incomeChart"></canvas>
+
+        <h2>Income vs Expenses</h2>
+        <canvas id="incomeExpenseChart"></canvas>
+
+        <h2>Profit/Loss Over Time</h2>
+        <canvas id="profitLossChart"></canvas>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
